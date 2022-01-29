@@ -1,8 +1,6 @@
 def read():
-    palabras = []
     with open("./archivos/palabras.txt", "r", encoding="utf-8") as f:
-        for palabra in f:
-            palabras.append(palabra)
+        palabras = [word for word in f]
 
 def run(): 
     pass
