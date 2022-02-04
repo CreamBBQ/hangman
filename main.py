@@ -1,4 +1,5 @@
 import random
+import os
 
 
 def normalize(string):
@@ -35,7 +36,7 @@ def game():
         win = False
         cont = 0
         userLetter = input("Ingrese una letra: ")
-        print("\n")
+        os.system("clear")
         userLetter = userLetter.lower()
         for i in lettersMW:
             if i == userLetter:
@@ -44,7 +45,7 @@ def game():
             cont = cont + 1
         if win == False: 
                 vidas = vidas - 1
-                print("\nFallaste. vidas restantes: " + str(vidas))
+                print("Fallaste. vidas restantes: " + str(vidas) + "\n")
         print(*hiddenLetters)
         if hiddenLetters == lettersMW: 
             print("\nFelicidades! Ganaste")
