@@ -1,4 +1,5 @@
 import random
+from termcolor import colored
 import os
 
 
@@ -24,11 +25,13 @@ def read():
 
 
 def game():
+
     words = read()
     mainWord = words[random.randint(0, len(words))]
     mainWord = normalize(mainWord) #No lo pongo en read() porque pretendo hacer un nivel solo con tildes.
     lettersMW = [i for i in mainWord]
     hiddenLetters = ["_ " for i in mainWord]
+    wrongWord = set()
     print(*hiddenLetters)
     vidas = 5
 
@@ -45,7 +48,10 @@ def game():
             cont = cont + 1
         if win == False: 
                 vidas = vidas - 1
-                print("Fallaste. vidas restantes: " + str(vidas) + "\n")
+                wrongWord.add("❌" + userLetter)
+                print(colored("Fallaste", "red") + ". vidas restantes: " + str(vidas) + "\n" + " ".join(wrongWord) + "\n")
+        else: 
+            print(colored("Acertaste", "green") + ". Te quedan " + str(vidas) + " vidas" + "\n" + " ".join(wrongWord) + "\n")
         print(*hiddenLetters)
         if hiddenLetters == lettersMW: 
             print("\nFelicidades! Ganaste")
